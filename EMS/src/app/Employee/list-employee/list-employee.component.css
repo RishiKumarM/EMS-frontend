@@ -1,0 +1,26 @@
+.listItem{
+  height: 100%;
+  width: 100%;
+}
+.listItem img{
+  height: 100%;
+  width: 100%;
+}
+.tableList{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0%;
+  left:0%;
+  align-items: center;
+  text-align: center;
+
+}
+table {
+  width: 100%;
+}
+h2 {
+  color: rgba(27, 12, 235, 0.929);
+  text-transform: uppercase;
+  text-justify: inter-word;
+}

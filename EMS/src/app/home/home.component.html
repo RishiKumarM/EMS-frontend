@@ -1,0 +1,66 @@
+<section class="hero">
+  <div class="hero-content">
+    <h1>Welcome to Employee Management System</h1>
+    <h3>Introducing the Next-Generation Employee Management System!</h3><br>
+    <a routerLink="/login" class="btn">Get Started</a>
+  </div>
+</section>
+
+<section class="catogry pt-3">
+  <div class="container-fluid px-0 overflow-hidden">
+    <div class="row">
+      <div class="col-sm-6 px-0">
+        <div class="imgbox">
+          <img src="assets/frustration.webp" class="img-fluid" alt="serum">
+          <br>
+          <marquee> Say Good Bye</marquee>
+        </div>
+      </div>
+      <div class="col-sm-6 my-auto px-2">
+        <div class="serumtext p-5 text-center">
+          <h4><strong>Are you tired of traditional, outdated HR solutions? Say goodbye to the mundane and embrace the future of employee management. Our revolutionary system brings a fresh and innovative approach to handling your workforce. We've reimagined every aspect to provide you with an unparalleled experience that stands out from the crowd.</strong></h4>
+          <button type="button" class="btn btn-outline-warning">Read More</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="featured">
+  <div class="text">
+    <h3>We are not just another HR solution. We are here to challenge the status quo and redefine the way you manage your employees. Join the revolution and unlock a world of possibilities with our Next-Generation Employee Management System. Get ready to experience the future of employee management. Stay ahead of the curve and leave your competitors in awe. Take the leap and be part of something truly extraordinary. Are you ready to embrace the future? Sign up now and be at the forefront of innovation with our Next-Generation Employee Management System. Together, let s shape the future of work.</h3>
+  </div>
+  </section>
+
+<section class="features">
+  <div class="feature">
+    <i class="fas fa-users"></i>
+    <h3>Employee Directory</h3>
+    <p>View and manage all employee details in one place.</p>
+  </div>
+  <div class="feature">
+    <i class="fas fa-calendar-alt"></i>
+    <h3>Leave Management</h3>
+    <p>Easily manage and track employee leaves and vacation requests.</p>
+  </div>
+  <div class="feature">
+    <i class="fas fa-chart-bar"></i>
+    <h3>Performance Metrics</h3>
+    <p>Track and analyze employee performance with detailed metrics.</p>
+  </div>
+</section>
+
+<mat-grid-list cols="4" rowHeight="100px">
+  <mat-grid-tile
+      *ngFor="let tile of tiles"
+      [colspan]="tile.cols"
+      [rowspan]="tile.rows"
+      [style.background]="tile.color">
+    {{tile.text}}
+  </mat-grid-tile>
+</mat-grid-list>
+
+<section class="cta">
+  <h2>Ready to streamline your employee management?</h2>
+  <a routerLink="/signup" class="btn">Sign Up Now</a>
+</section>

@@ -1,0 +1,57 @@
+<div class="signupform">
+  <img src="assets/Landscape-Color.jpg">
+  <div class="form-content">
+    <mat-icon class="leftArroow" matTooltip="BACK" (click)="goBack()">keyboard_backspace</mat-icon>
+<div class="container" style="position: relative;">
+  <form [formGroup]="regesrationForm">
+    <div class="form">
+      <h4> Start Your Free Trail </h4>
+      <img src="assets/leaf.png">
+      <mat-form-field class="fName">
+        <input matInput placeholder="First Name" formControlName="fname" (keypress)="letterOnly($event)" required>
+        <mat-error *ngIf="myError('fname','required')">Enter Your First Name</mat-error>
+        <mat-error *ngIf="myError('fname','pattern')">Enter Valid Name</mat-error>
+      </mat-form-field>
+      <mat-form-field class="fName">
+        <input matInput formControlName="lname" (keypress)="letterOnly($event)" placeholder="Last Name" required>
+        <mat-error *ngIf="myError('lname','required')">Enter Your Last Name</mat-error>
+        <mat-error *ngIf="myError('lname','pattern')">Enter Valid SurName</mat-error>
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <input matInput formControlName="email" placeholder="abc@example.com" required>
+        <mat-error *ngIf="myError('email','required')">Enter Your Email</mat-error>
+        <mat-error *ngIf="myError('email','pattern')">Enter Correct Email</mat-error>
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <input matInput maxlength="10" minlength="10" formControlName="phone" (keypress)="OnlyNumbersAllowed($event)" placeholder="Mobile Number" required>
+        <mat-error *ngIf="myError('phone','required')">Enter Your Phone Number</mat-error>
+        <mat-error *ngIf="myError('phone','pattern')">Enter Correct phone number</mat-error>
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <input matInput type="password" id="password" formControlName="password" placeholder="Password" [type]="hide ? 'password' : 'text'">
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+          <mat-icon>{{hide ? 'password' : 'visibility_off'}}</mat-icon>
+        </button>
+        <mat-error *ngIf="myError('password','required')">Enter Password in Correct Format</mat-error>
+        <mat-error *ngIf="myError('password','pattern')">Password contain 8 characters and (A-Za-z0-9) and special characters. </mat-error>
+      </mat-form-field>
+      <br>
+      <mat-form-field >
+        <input matInput type="password" id="confirmPassword" formControlName="confirmPassword" placeholder="Confirm Password" required>
+          <mat-icon *ngIf="isVerified" style="color:green" matSuffix>check_circle</mat-icon>
+          <mat-icon *ngIf="notVerified" style="color:red" matSuffix>highlight_off</mat-icon>
+        <mat-error *ngIf="myError('confirmPassword','required')">Confirm Password is required</mat-error>
+        <mat-error *ngIf="regesrationForm.hasError('passwordMismatch')">Passwords do not match</mat-error>
+      </mat-form-field><br>
+      <button mat-raised-button color="primary" id="backButton" type="submit" 
+      (click)="onSubmit($event, regesrationForm)"> WELCOME </button>
+      <p>By signing up you accept our <span id="terms" routerLink="/termsconditions">Terms and Conditions</span></p>
+      <p>Already have account? <span id="terms" routerLink="/login">Login</span></p>
+    </div>
+  </form>
+  </div>
+</div>
+</div>
