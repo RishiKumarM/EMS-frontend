@@ -9,6 +9,7 @@ import {CdkListboxModule} from '@angular/cdk/listbox';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { BreakpointObserverOverviewComponent } from './Extra/breakpoint-observer-overview/breakpoint-observer-overview.component';
+import {MatFormFieldModule} from '@angular/material/form-field';
 import {ObserversModule} from '@angular/cdk/observers';
 import {MatGridListModule} from '@angular/material/grid-list';
 import { SignUPComponent } from './Pages/sign-up/sign-up.component';
@@ -55,6 +56,7 @@ import { RegiSuccesfulComponent } from './Popup/regi-succesful/regi-succesful.co
 import { TermsConditionComponent } from './Extra/terms-condition/terms-condition.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {HttpClientModule} from '@angular/common/http';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
@@ -70,7 +72,8 @@ import {HttpClientModule} from '@angular/common/http';
     AddEmployeeComponent,
     ListEmployeeComponent,
     RegiSuccesfulComponent,
-    TermsConditionComponent
+    TermsConditionComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
@@ -80,6 +83,7 @@ import {HttpClientModule} from '@angular/common/http';
     CdkListboxModule,
     ObserversModule,
     ReactiveFormsModule,
+    MatFormFieldModule,
     FormsModule,
     MatGridListModule,
     MatToolbarModule,
