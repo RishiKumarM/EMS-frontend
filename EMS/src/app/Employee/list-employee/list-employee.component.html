@@ -1,0 +1,45 @@
+<div class="listItem">
+  <img src="assets/sunset.jpg">
+  <div class="container">
+   <div class="tableList">
+    <div class="bg-success text-white">
+      <div class="container text-center mt">
+          <h2><p> Your Employees </p> </h2>
+          <div class="my-3">
+              <!-- <h5 [ngClass]="{'strike': !employee.active}">{{employee.ID}}</h5> -->
+              <table class="table" id="employees">
+                  <thead>
+                      <tr>
+                          <th scope="col"> SNO </th>
+                          <th scope="col"> ID </th>
+                          <th scope="col"> NAME </th>
+                          <th scope="col"> AGE </th>
+                          <th scope="col"> SALARY </th>
+                          <th scope="col"> ADDRESS </th>
+                          <th scope="col"> ACTION </th>
+                      </tr>
+                  </thead>
+                  <tbody *ngIf="employees">
+                      <tr *ngFor="let employee of employees; let i = index;">
+                          <td>{{i + 1}}</td>
+                          <td>{{employee.id}}</td>
+                          <td>{{employee.name}}</td>
+                          <td>{{employee.age}}</td>
+                          <td>{{employee.salary}}</td>
+                          <td>{{employee.address}}</td>
+                          <td>
+                              <input type="checkbox" class="form-check-input" id="exampleCheckobx">
+                              <button (click)="deleteEmployee(employee)" class="btn btn-danger" style="margin-left: 10px;">DELETE</button>
+                          <td>
+                          </tr>
+                        </tbody>
+                      </table>
+                      <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                                           showFirstLastButtons
+                                           aria-label="Select page of periodic elements">
+                      </mat-paginator>
+              <!-- <a class="btn btn-danger btn-lg" type="button" routerLink="emplist" (click)="onClick(employees)">Update </a> -->
+          </div>
+   </div> 
+  </div>
+</div>
