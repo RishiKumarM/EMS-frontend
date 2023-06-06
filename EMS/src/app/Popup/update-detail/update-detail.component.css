@@ -1,0 +1,51 @@
+.updateValue{
+  height: auto;
+  width: 100%;
+}
+
+h4{
+  text-align: center;
+  padding-bottom: 4%;
+}
+#close{
+  position: absolute;
+  padding-bottom: 20%;
+}
+#close:hover{
+  font-weight: bold;
+}
+.form{
+  background-color: rgb(179, 228, 228);
+  text-align: center;
+  padding-bottom: 5%;
+  padding-top: 5%;
+  box-shadow: 5px 20px 40px 20px rgb(118, 215, 94);
+}
+mat-form-field {
+  margin-left: 2%;
+  width: 60%;
+  margin-right: 2%;
+}
+#btn{
+  padding-left: 20%;
+  align-items: center;
+  
+}
+#btn #nothanks{
+  padding-left: 5%;
+  background-color: green;
+}
+
+button.mat-button{
+  border: 1px solid red;
+  text-align: center;
+  background-color: rgb(212, 78, 78);
+  color: black;
+  margin: 0% 5%;
+}
+
+button.mat-button:hover{
+ background-color: red;
+  text-align: center;
+  color: white;
+}

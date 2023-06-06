@@ -1,0 +1,39 @@
+h4{
+  font-family: Arial, Helvetica, sans-serif;
+  color: red;
+  font-weight: bold;
+}
+#btn{
+  padding-left: 10%;
+}
+#btn #nothanks{
+  padding-left: 5%;
+  background-color: green;
+}
+
+button.mat-button{
+  border: 1px solid red;
+  text-align: center;
+  background-color: rgb(212, 78, 78);
+  color: black;
+  margin: 0% 5%;
+}
+
+button.mat-button:hover{
+ background-color: red;
+  text-align: center;
+  color: white;
+}
+
+.example-section {
+  display: flex;
+  align-content: center;
+  align-items: center;
+  height: 60px;
+  padding-left: 10%;
+}
+
+.example-margin {
+  margin: 0 15px;
+  font-weight: bold;
+}

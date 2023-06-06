@@ -1,1 +1,34 @@
-<p>update-detail works!</p>
+<div class="updateValue">
+  <mat-icon id="close" (click)="onClose()">close</mat-icon>
+  <h4> Update Employee Detail </h4>
+  <div class="container">
+    <div class="form">
+      <form [formGroup]="updateForm">
+        <mat-form-field class="example-full-width">
+          <!-- <mat-label>ID</mat-label> -->
+          <input matInput formControlName="id" placeholder="ID" value="Id">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <input matInput formControlName="name" placeholder="Name" value="Name">
+        </mat-form-field><br>
+
+        <mat-form-field class="example-full-width">
+          <input matInput formControlName="age" placeholder="Age" value="age">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <input matInput formControlName="salary" placeholder="Salary" value="salary">
+        </mat-form-field><br>
+
+        <mat-form-field class="example-full-width">
+          <textarea matInput formControlName="address" placeholder="Address" value="address"></textarea>
+        </mat-form-field><br>
+        <div mat-dialog-actions id="btn">
+          <button mat-button id="nothanks" (click)="onNoClick()">Reset</button>
+          <button mat-button [disabled]="updateForm.valid" (click)="onDelete()">UPDATE</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

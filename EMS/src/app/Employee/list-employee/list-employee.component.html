@@ -2,44 +2,53 @@
   <img src="assets/sunset.jpg">
   <div class="container">
    <div class="tableList">
-    <div class="bg-success text-white">
-      <div class="container text-center mt">
-          <h2><p> Your Employees </p> </h2>
-          <div class="my-3">
-              <!-- <h5 [ngClass]="{'strike': !employee.active}">{{employee.ID}}</h5> -->
-              <table class="table" id="employees">
-                  <thead>
-                      <tr>
-                          <th scope="col"> SNO </th>
-                          <th scope="col"> ID </th>
-                          <th scope="col"> NAME </th>
-                          <th scope="col"> AGE </th>
-                          <th scope="col"> SALARY </th>
-                          <th scope="col"> ADDRESS </th>
-                          <th scope="col"> ACTION </th>
-                      </tr>
-                  </thead>
-                  <tbody *ngIf="employees">
-                      <tr *ngFor="let employee of employees; let i = index;">
-                          <td>{{i + 1}}</td>
-                          <td>{{employee.id}}</td>
-                          <td>{{employee.name}}</td>
-                          <td>{{employee.age}}</td>
-                          <td>{{employee.salary}}</td>
-                          <td>{{employee.address}}</td>
-                          <td>
-                              <input type="checkbox" class="form-check-input" id="exampleCheckobx">
-                              <button (click)="deleteEmployee(employee)" class="btn btn-danger" style="margin-left: 10px;">DELETE</button>
-                          <td>
-                          </tr>
-                        </tbody>
-                      </table>
-                      <mat-paginator [pageSizeOptions]="[5, 10, 20]"
-                                           showFirstLastButtons
-                                           aria-label="Select page of periodic elements">
-                      </mat-paginator>
-              <!-- <a class="btn btn-danger btn-lg" type="button" routerLink="emplist" (click)="onClick(employees)">Update </a> -->
-          </div>
+       <table mat-table [dataSource]="dataSource" class="mat-elevation">
+           <ng-container matColumnDef="sno">
+               <th mat-header-cell *matHeaderCellDef> SNO.</th>
+               <td mat-cell *matCellDef="let element1 ,let i = index;"> {{i+1}} </td>
+           </ng-container>
+           <!-- Position Column -->
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef> ID </th>
+          <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+        </ng-container>
+      
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef> NAME </th>
+          <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+        </ng-container>
+      
+        <!-- Weight Column -->
+        <ng-container matColumnDef="age">
+          <th mat-header-cell *matHeaderCellDef> AGE </th>
+          <td mat-cell *matCellDef="let element"> {{element.age}} </td>
+        </ng-container>
+      
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="salary">
+          <th mat-header-cell *matHeaderCellDef> SALARY </th>
+          <td mat-cell *matCellDef="let element"> {{element.salary}} </td>
+        </ng-container>
+        <ng-container matColumnDef="address">
+          <th mat-header-cell *matHeaderCellDef> ADDRESS </th>
+          <td mat-cell *matCellDef="let element"> {{element.address}} </td>
+        </ng-container>
+        <ng-container matColumnDef="action">
+          <th mat-header-cell *matHeaderCellDef> ACTION </th>
+          <td mat-cell *matCellDef="let element">
+            <a class="btn btn-danger btn-md" type="button" routerLink="/emplist" 
+            (click)="onClick()">Update </a>
+            <button (click)="deleteEmployee()" class="btn btn-danger" 
+            style="margin-left: 10px;">DELETE</button>
+            </td>
+        </ng-container>
+      
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+        <mat-paginator [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" [showFirstLastButtons]="true" [pageSize]="pageSize" [pageIndex]="currentPage" (page)="handlePage($event)">
+        </mat-paginator>
    </div> 
   </div>
 </div>

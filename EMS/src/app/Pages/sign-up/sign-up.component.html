@@ -6,7 +6,7 @@
   <form [formGroup]="regesrationForm">
     <div class="form">
       <h4> Start Your Free Trail </h4>
-      <img src="assets/leaf.png">
+      <img src="assets/red-maple-leaf.png">
       <mat-form-field class="fName">
         <input matInput placeholder="First Name" formControlName="fname" (keypress)="letterOnly($event)" required>
         <mat-error *ngIf="myError('fname','required')">Enter Your First Name</mat-error>
