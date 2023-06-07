@@ -42,7 +42,7 @@ export class ListEmployeeComponent implements OnInit {
     this.dataSource.paginator = this.paginator;
   }
   ngOnInit(): void {
-    this.getEmployee();
+    this.getEmployee();  
   }
 
   getEmployee() {

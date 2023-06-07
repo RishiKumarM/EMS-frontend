@@ -12,12 +12,12 @@ import { ApiService } from 'src/app/Services/api.service';
 export class UpdateDetailComponent implements OnInit{
 
   updateForm!:FormGroup;
-
-  constructor(public api: ApiService,private Http:HttpClient ,public dialogRef: MatDialogRef<UpdateDetailComponent>,){}
+  array:any;
+  constructor(public api: ApiService,private Http:HttpClient ,public dialogRef: MatDialogRef<UpdateDetailComponent>,){  }
 
   ngOnInit(): void {
     this.getEmployee();
-     
+    
     this.updateForm = new FormGroup({
       id: new FormControl('', [Validators.required,]),
       name: new FormControl('', [Validators.required,]),
@@ -29,15 +29,22 @@ export class UpdateDetailComponent implements OnInit{
   }
 
   getEmployee() {
-    this.Http.get("http://localhost:8080/getEmpAll").subscribe((response: any) => { return response;}
-  )};
+    this.Http.get("http://localhost:8080/getEmpAll").subscribe((response: any) => {
+      this.array = response;
+  })
+}
 
   onClose(){
     this.dialogRef.close();
   }
 
   onNoClick(){
-
+    const filteredArray = this.array.filter((obj: { id: number; }) => obj.id);
+    filteredArray.forEach((obj: { id: string; }) => {
+    
+      obj.id = obj.id.toUpperCase();
+    });
+    console.log(filteredArray);
     this.updateForm.reset();
   }
   onDelete(){
