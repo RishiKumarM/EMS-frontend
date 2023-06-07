@@ -20,13 +20,13 @@
           <mat-error *ngIf="myError('password','required')">Enter Password in Correct Format</mat-error>
           <mat-error *ngIf="myError('password','pattern')">Password contain 8 characters and (A-Za-z0-9) and special characters. </mat-error>
         </mat-form-field><br><br/>
-        <button mat-raised-button color="primary" id="backButton" type="submit" 
-        (click)="onSubmit($event, loginForm)"> continue </button>
+        <button mat-raised-button color="primary" id="backButton" type="button" 
+        (click)="onSubmit(loginForm)"> continue </button>
         <p>By signing in you accept our <span id="terms" routerLink="/termsconditions">Terms and Conditions</span></p>
         <p id="forgetPassword" routerLink="/forgetpassword">Forget Password?</p>
         <p>Create an account? <span id="terms" routerLink="/signup">Sign Up</span></p>
         <hr>
-        <button mat-raised-button color="primary" id="nextButton" type="submit" 
+        <button mat-raised-button color="primary" id="nextButton" type="button" 
         (click)="signUpWithGoogle()"><img src="assets/Google.webp"> Continue With Google </button>
       </div>
     </form>

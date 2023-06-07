@@ -41,13 +41,13 @@
       <br>
       <mat-form-field >
         <input matInput type="password" id="confirmPassword" formControlName="confirmPassword" placeholder="Confirm Password" required>
-          <mat-icon *ngIf="isVerified" style="color:green" matSuffix>check_circle</mat-icon>
+          <mat-icon *ngIf="verified" style="color:green" matSuffix>check_circle</mat-icon>
           <mat-icon *ngIf="notVerified" style="color:red" matSuffix>highlight_off</mat-icon>
         <mat-error *ngIf="myError('confirmPassword','required')">Confirm Password is required</mat-error>
         <mat-error *ngIf="regesrationForm.hasError('passwordMismatch')">Passwords do not match</mat-error>
       </mat-form-field><br>
-      <button mat-raised-button color="primary" id="backButton" type="submit" 
-      (click)="onSubmit($event, regesrationForm)"> WELCOME </button>
+      <button mat-raised-button color="primary" id="backButton" type="button" 
+      (click)="onSubmit(regesrationForm)"> WELCOME </button>
       <p>By signing up you accept our <span id="terms" routerLink="/termsconditions">Terms and Conditions</span></p>
       <p>Already have account? <span id="terms" routerLink="/login">Login</span></p>
     </div>

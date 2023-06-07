@@ -57,8 +57,13 @@ export class LoginComponent implements OnInit {
     this.location.back();
   }
 
-  onSubmit(event:any, loginForm:FormGroup){
-
+  onSubmit(loginForm:FormGroup){
+    this.loginForm.value;
+    if(this.loginForm.invalid){
+      return;
+    }else{
+      console.log(this.loginForm.value);
+    }
   }
   signUpWithGoogle() {
     
