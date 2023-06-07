@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     this.loginForm = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.email,  Validators.pattern("[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?")]),
-      password: new FormControl('', [Validators.required, Validators.pattern(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/)]),
+      password: new FormControl('', [Validators.required, Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{7,}')]),
     })
   }
   public myError = (controlName: string, errorName: string) => {
@@ -57,8 +57,13 @@ export class LoginComponent implements OnInit {
     this.location.back();
   }
 
-  onSubmit(event:any, loginForm:FormGroup){
-
+  onSubmit(loginForm:FormGroup){
+    this.loginForm.value;
+    if(this.loginForm.invalid){
+      return;
+    }else{
+      console.log(this.loginForm.value);
+    }
   }
   signUpWithGoogle() {
     

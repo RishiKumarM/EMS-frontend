@@ -1,1 +1,10 @@
-<p>delete-warning works!</p>
+<div mat-dialog-content>
+  <h4> Sure you want to delete? </h4>
+  <section class="example-section">
+    <mat-checkbox class="example-margin" [(ngModel)]="disabled">Please confirm to delete. </mat-checkbox>
+  </section>
+</div>
+<div mat-dialog-actions id="btn">
+  <button mat-button id="nothanks" (click)="onNoClick()">No Thanks</button>
+  <button mat-button [disabled]="!disabled" (click)="onDelete(message, action)">DELETE</button>
+</div>

@@ -12,8 +12,8 @@ import { validateVerticalPosition } from '@angular/cdk/overlay';
 export class SignUPComponent implements OnInit {
   regesrationForm!: FormGroup;
   hide = true;
-  isVerified = false;
-  notVerified = true;
+  verified = false;
+  notVerified = false;
   isPasswordMatch!: boolean;
   password = '';
   confirmPassword = '';
@@ -53,13 +53,13 @@ export class SignUPComponent implements OnInit {
   ngOnInit(): void {
 
       this.regesrationForm = new FormGroup({
-        adminId: new FormControl(this.adminId, Validators.required),
+        adminId: new FormControl(this.adminId),
         fname: new FormControl('', [Validators.required, Validators.pattern(/[(\[a-zA-Z0-9\])\\1{2,}\\[~`!@#$%^&()_={}[\]:;,.<>+\/?-]/)]),
         lname: new FormControl('', [Validators.required, Validators.pattern(/[(\[a-zA-Z0-9\])\\1{2,}\\[~`!@#$%^&()_={}[\]:;,.<>+\/?-]/)]),
         email: new FormControl('', [Validators.required, Validators.email,  Validators.pattern("[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?")]),
         phone: new FormControl('', [Validators.required, Validators.pattern("^((\\+91-?)|0_%+-)?[6,7,8,9][0-9]{0,9}$")]),
-        password: new FormControl('', [Validators.required, Validators.pattern(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/)]),
-        confirmPassword: new FormControl('', [Validators.required, Validators.pattern(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/)])
+        password: new FormControl('', [Validators.required, Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{7,}')]),
+        confirmPassword: new FormControl('', [Validators.required, Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{7,}')])
       }, { validators: this.passwordMatchValidator }
       );
     }
@@ -71,6 +71,7 @@ export class SignUPComponent implements OnInit {
       if (password === confirmPassword) {
         return null;
       } else {
+        this.notVerified = true;
         return { passwordMismatch: true };
       }
     }
@@ -83,8 +84,13 @@ export class SignUPComponent implements OnInit {
     this.location.back();
   }
 
-  onSubmit(event:any, regesrationForm:FormGroup){
-
+  onSubmit(regesrationForm:FormGroup){
+    var employee = this.regesrationForm.value;
+    if(this.regesrationForm.invalid){
+      return;
+    } else{
+      console.log(employee);
+    }
   }
 
 }

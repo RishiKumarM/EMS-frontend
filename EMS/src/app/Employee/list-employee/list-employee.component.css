@@ -10,7 +10,7 @@
   position: absolute;
   width: 100%;
   height: 100%;
-  top: 0%;
+  top: 10%;
   left:0%;
   align-items: center;
   text-align: center;
@@ -20,7 +20,44 @@ table {
   width: 100%;
 }
 h2 {
-  color: rgba(27, 12, 235, 0.929);
+  color: rgba(125, 225, 18, 0.929);
   text-transform: uppercase;
   text-justify: inter-word;
+}
+.demo-table {
+  width: 100%;
+}
+
+.mat-column-demo-position {
+  width: 32px;
+  border-right: 1px solid currentColor;
+  padding-right: 24px;
+  text-align: center;
+}
+
+.mat-column-demo-name {
+  padding-left: 16px;
+  font-size: 20px;
+}
+
+.mat-column-demo-weight {
+  font-style: italic;
+}
+
+.mat-column-demo-symbol {
+  width: 32px;
+  text-align: center;
+  font-weight: bold;
+}
+th.mat-header-cell {
+  text-align:center;
+  font-weight: bold;
+  font-size: medium;
+  color:black
+}
+td.mat-cell {
+  text-align:center;
+  font-weight: 500;
+  font-size: normal;
+  color:black
 }

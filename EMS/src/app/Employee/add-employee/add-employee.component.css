@@ -1,0 +1,56 @@
+.updateValue{
+  height: auto;
+  width: 100%;
+  text-align: center;
+  align-items: center;
+  padding-bottom: 5%;
+}
+
+h4{
+  text-align: center;
+  padding-top: 2%;
+  padding-bottom: 2%;
+
+}
+
+.updateValue .form{
+  align-items: center;
+  width: 100%;
+  background-color: rgb(179, 228, 228);
+  text-align: center;
+  padding-bottom: 5%;
+  padding-top: 2%;
+  padding-left: 15%;
+  padding-right: 15%;
+  box-shadow: 5px 20px 40px 20px rgb(180, 114, 89);
+}
+mat-form-field {
+  margin-left: 10%;
+  width: 60%;
+  margin-right: 10%;
+}
+#btn{
+  padding-left: 30%;
+  align-items: center;
+  
+}
+#btn #nothanks{
+  padding-left: 2%;
+  background-color: green;
+  align-items: center;
+  
+}
+
+button.mat-button{
+  border: 1px solid red;
+  text-align: center;
+  background-color: rgb(212, 78, 78);
+  color: black;
+  margin: 0% 5%;
+}
+
+button.mat-button:hover{
+ background-color: red;
+  text-align: center;
+  color: white;
+}
