@@ -3,31 +3,27 @@
   <h4> Update Employee Detail </h4>
   <div class="container">
     <div class="form">
-      <form [formGroup]="updateForm">
+      <form #myForm="ngForm" (ngSubmit)="submitForm(myForm)"> 
         <mat-form-field class="example-full-width">
-          <!-- <mat-label>ID</mat-label> -->
-          <input matInput formControlName="" placeholder="ID" value="">
+          <input matInput name="id" [(ngModel)]="elements.id" placeholder="ID" readonly>       
         </mat-form-field>
 
         <mat-form-field class="example-full-width">
-          <input matInput formControlName="name" placeholder="Name" value="Name">
+          <input matInput name="name" [(ngModel)]="elements.name" placeholder="Name">
         </mat-form-field><br>
 
         <mat-form-field class="example-full-width">
-          <input matInput formControlName="age" placeholder="Age" value="age">
+          <input matInput name="age" [(ngModel)]="elements.age" placeholder="Age">
         </mat-form-field>
 
         <mat-form-field class="example-full-width">
-          <input matInput formControlName="salary" placeholder="Salary" value="salary">
+          <input matInput name="salary" [(ngModel)]="elements.salary" placeholder="Salary">
         </mat-form-field><br>
 
         <mat-form-field class="example-full-width">
-          <textarea matInput formControlName="address" placeholder="Address" value="address"></textarea>
+          <textarea matInput name="address" [(ngModel)]="elements.address" placeholder="Address"></textarea>
         </mat-form-field><br>
-        <div mat-dialog-actions id="btn">
-          <button mat-button id="nothanks" (click)="onNoClick()">Reset</button>
-          <button mat-button (click)="onDelete()">UPDATE</button>
-        </div>
+          <button type="submit" class="btn btn-primary">Update Details</button>
       </form>
     </div>
   </div>

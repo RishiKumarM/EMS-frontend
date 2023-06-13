@@ -1,8 +1,11 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
+import { Subscription } from 'rxjs';
 import { ApiService } from 'src/app/Services/api.service';
+import { SharedService } from 'src/app/Services/shared.service';
+
 
 @Component({
   selector: 'app-update-detail',
@@ -11,26 +14,27 @@ import { ApiService } from 'src/app/Services/api.service';
 })
 export class UpdateDetailComponent implements OnInit{
 
+  elements: any = { }; 
+
   updateForm!:FormGroup;
-  array:any;
-  constructor(public api: ApiService,private Http:HttpClient ,public dialogRef: MatDialogRef<UpdateDetailComponent>,){  }
+  private subscription!: Subscription;
+  message: { id: string; name: string; age: string; salary: string; address: string; } | undefined;
+  client: any;
+  constructor(public api: ApiService,private Http:HttpClient,private sharedService: SharedService ,public dialogRef: MatDialogRef<UpdateDetailComponent>,)
+  { }
 
   ngOnInit(): void {
-    this.getEmployee();
-    
-    this.updateForm = new FormGroup({
-      id: new FormControl('', [Validators.required,]),
-      name: new FormControl('', [Validators.required,]),
-      age: new FormControl('', [Validators.required,]),
-      salary: new FormControl('', [Validators.required,]),
-      address: new FormControl('', [Validators.required,]),
 
-    })
+    this.sharedService.element$.subscribe(element => {
+     this.elements = element; 
+  });
+      
+    this.getEmployee();
   }
 
   getEmployee() {
     this.Http.get("http://localhost:8080/getEmpAll").subscribe((response: any) => {
-      this.array = response;
+      response;
   })
 }
 
@@ -39,26 +43,16 @@ export class UpdateDetailComponent implements OnInit{
   }
 
   onNoClick(){
-    const filteredArray = this.array.filter((obj: { id: number; }) => obj.id);
-    filteredArray.forEach((obj: { id: string; }) => {
-    
-      obj.id = obj.id.toUpperCase();
-    });
-    console.log(filteredArray);
     this.updateForm.reset();
   }
-  onDelete(){
-    var employee = this.updateForm.value;
-    if(this.updateForm.invalid){
-      return;
-    }else{
-       this.api.updateEmployee(employee).subscribe((res:any) => {
-         alert("data has been updated");
-         return res;
-        })
+
+  submitForm(form: NgForm) {
+    if (form.valid) {
+      const employee = form.value;
+       this.api.updateEmployee(employee).subscribe(res => res);
         this.getEmployee();
         this.dialogRef.close();
     }
+    
   }
-
 }

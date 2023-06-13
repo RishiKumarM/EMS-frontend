@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="studentSection">
+    <h2> Add Your Student Here </h2>
+    <form [formGroup]="studentForm">
+      <div class="container student">
+        <mat-form-field>
+          <input matInput formControlName="stid" placeholder="Student ID" required>
+          <mat-error *ngIf="myError('stid', 'required')">Student Id required </mat-error>
+        </mat-form-field><br>
+        <mat-form-field>
+          <input matInput formControlName="stname" placeholder="Student Name" required>
+          <mat-error *ngIf="myError('stname','required')">Student Name required </mat-error>
+        </mat-form-field><br>
+        <button mat-button class="btn" (click)="onSubmit(studentForm)">Submit</button>
+      </div>
+    </form>
+  </div>
+</div>

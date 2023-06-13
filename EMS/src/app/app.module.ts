@@ -55,9 +55,11 @@ import { ListEmployeeComponent } from './Employee/list-employee/list-employee.co
 import { RegiSuccesfulComponent } from './Popup/regi-succesful/regi-succesful.component';
 import { TermsConditionComponent } from './Extra/terms-condition/terms-condition.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {HttpClientModule} from '@angular/common/http';
-import { HeaderComponent } from './header/header.component';
-
+import { HttpClientModule, HttpClientJsonpModule } from '@angular/common/http';import { HeaderComponent } from './header/header.component';
+import { FingerprintCaptureComponent } from './Pages/fingerprint-capture/fingerprint-capture.component';
+import { Addsuccesful } from './Employee/add-employee/addsuccessful';
+import { AddStudentComponent } from './Student/add-student/add-student.component';
+import { StudentListComponent } from './Student/student-list/student-list.component'
 @NgModule({
   declarations: [
     AppComponent,
@@ -73,12 +75,17 @@ import { HeaderComponent } from './header/header.component';
     ListEmployeeComponent,
     RegiSuccesfulComponent,
     TermsConditionComponent,
-    HeaderComponent
+    HeaderComponent,
+    FingerprintCaptureComponent,
+    Addsuccesful,
+    AddStudentComponent,
+    StudentListComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    HttpClientJsonpModule,
     LayoutModule,
     CdkListboxModule,
     ObserversModule,

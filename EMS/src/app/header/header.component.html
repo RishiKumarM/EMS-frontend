@@ -1,35 +1,47 @@
-<mat-toolbar color="primary">
-  <div class="logo">EMS</div>
-  <span class="example-spacer"></span>
-  <button type="button" class="login" [matMenuTriggerFor]="menus" routerLink="/" >Home</button>
-  <mat-menu #menus="matMenu">
-    <button mat-menu-item style="color: rgb(7, 10, 7); font-weight:bolder;"> Contact US
+<div class="header">
+  <mat-toolbar color="primary" class="mat-elevation-z5">
+    <button mat-icon-button *ngIf="isMenuOpen" (click)="toggleMenu()" class="example-icon">
+      <mat-icon>menu</mat-icon>
     </button>
-    <button routerLink="/" mat-menu-item style="color: rgb(7, 10, 7); font-weight:bolder;"> Home
-      <mat-icon routerLink="/" style="color: rgb(108, 178, 108); font-weight:bolder;"> home </mat-icon>
-    </button>
-    <button mat-menu-item style="color: rgb(7, 10, 7); font-weight:bolder;"> Email
-      <mat-icon style="color: rgb(97, 168, 97); font-weight:bolder;"> email </mat-icon>
+    <span class="logo">EMS</span>
+    <div fxFlex fxShow.gt-sm>
+      <button type="button" class="login" mat-button [matMenuTriggerFor]="menus" >Home</button>
+      <mat-menu #menus="matMenu">
+        <button routerLink="/" mat-menu-item style="color: rgb(7, 10, 7); font-weight:bolder;"> Home
+          <mat-icon routerLink="/" style="color: rgb(108, 178, 108); font-weight:bolder;"> home </mat-icon>
+        </button>
+        <mat-divider></mat-divider>
+        <button mat-menu-item style="color: rgb(7, 10, 7); font-weight:bolder;"> Contact US
+        </button>
+      </mat-menu>
+      <span class="example-spacer"></span>
+      <button mat-button id="btns" mat-button [matMenuTriggerFor]="menu">Feature</button>
+    <mat-menu #menu="matMenu">
+  <button mat-menu-item style="color: rgb(7, 10, 7); font-weight:bolder;" routerLink="/addEmployee">Add Employee
+    <mat-icon style="color: green; font-weight:bolder;"> add </mat-icon></button>
+    <mat-divider></mat-divider>
+  <button mat-menu-item style="color: rgb(7, 10, 7); font-weight:bolder;" routerLink="/emplist">Employee List
+    <mat-icon style="color: green; font-weight:bolder;"> list </mat-icon>
+  </button>
+  <mat-divider></mat-divider>
+  <button mat-menu-item style="color: rgb(7, 10, 7); font-weight:bolder;" routerLink="/addstudent">Add Student
+    <mat-icon style="color: green; font-weight:bolder;"> add </mat-icon></button>
+    <mat-divider></mat-divider>
+    <button mat-menu-item style="color: rgb(7, 10, 7); font-weight:bolder;" routerLink="/studentlist">Student List
+      <mat-icon style="color: green; font-weight:bolder;"> list </mat-icon>
     </button>
   </mat-menu>
-  <span class="spacer"></span>
-  <button mat-button id="btns" [matMenuTriggerFor]="menu">FEATURES</button>
-  <mat-menu #menu="matMenu">
-<button mat-menu-item style="color: rgb(7, 10, 7); font-weight:bolder;" routerLink="/addEmployee">Add Employee
-  <mat-icon style="color: green; font-weight:bolder;"> add </mat-icon></button>
-<button mat-menu-item style="color: rgb(7, 10, 7); font-weight:bolder;" routerLink="/listEmployee">Employee List
-  <mat-icon style="color: green; font-weight:bolder;"> list </mat-icon>
-</button>
-</mat-menu>
-  <span class="spacer"></span>
-  <button type="button" class="login" routerLink="/login" >Login</button>
-  <span class="spacer"></span>
-  <button type="button" routerLink="/signup" class="sign" routerLinkActive="active">Sign Up</button>
-  <button *ngIf="isMenuOpen" mat-icon-button (click)="toggleMenu()" class="example-icon" aria-label="Example icon-button with menu icon">
-    <mat-icon>menu</mat-icon>
-  </button>
-</mat-toolbar>
-
+  <span class="example-spacer"></span>
+  <button type="button" class="login" mat-button routerLink="/login" >Login</button>
+  <span class="example-spacer"></span>
+  <button type="button" routerLink="/signup" mat-button class="sign" routerLinkActive="active">Sign Up</button>
+  <span class="example-spacer"></span>
+  </div>&nbsp; 
+  <button mat-icon-button>
+      <mat-icon>account_circle</mat-icon>
+    </button>
+  </mat-toolbar>
+</div>
 <mat-sidenav-container *ngIf="showMwnu" class="example-sidenav-container"
 [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
 <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'"
@@ -38,9 +50,10 @@
 
 <mat-sidenav-content>
 <div class="logos">EMS
-<mat-icon (click)="onClose()" id="sideNavClose">close</mat-icon></div>
+<mat-icon (click)="onClose()" id="sideNavClose" matTooltip="Close">close</mat-icon></div>
 <button mat-menu-item style="color: rgb(7, 10, 7); font-weight:bolder;">Home
   <mat-icon style="color: green; font-weight:bolder;"> home </mat-icon></button>
 <button mat-menu-item style="color: rgb(7, 10, 7); font-weight:bolder;">Feature</button>
 </mat-sidenav-content>
 </mat-sidenav-container>
+

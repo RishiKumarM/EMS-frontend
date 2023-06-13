@@ -1,8 +1,10 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Inject, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ApiService } from 'src/app/Services/api.service';
 import { Employee } from '../list-employee/list-employee.component';
+import {MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { Addsuccesful } from './addsuccessful';
 
 @Component({
   selector: 'app-add-employee',
@@ -15,7 +17,7 @@ export class AddEmployeeComponent implements OnInit{
   @Output() employeeAdd: EventEmitter<Employee> = new EventEmitter();
   message: any;
 
-  constructor(private backend:ApiService, private client: HttpClient,){}
+  constructor(private backend:ApiService, private client: HttpClient, public dialog: MatDialog){}
 
   ngOnInit(): void {
      
@@ -45,7 +47,7 @@ export class AddEmployeeComponent implements OnInit{
       }else{
         let response=this.backend.postEmployee(employee);
         response.subscribe((response:any)=>this.message = employee);
-        alert("Data has been Submitted!!");
+        alert("Employee data has been added!!") 
       }
     }
   }

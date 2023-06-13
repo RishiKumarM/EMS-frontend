@@ -1,0 +1,59 @@
+.studentSection{
+  height: auto;
+  width: 100%;
+  margin-top: 2%;
+}
+h2{
+  text-align: center;
+}
+.student{
+  text-align: center;
+  height: auto;
+  padding-top: 15px;
+  padding-bottom: 2%;
+  border: 1px solid black;
+  margin-bottom: 2%;
+}
+
+.btn{
+  background-color: rgb(49, 49, 193);
+  color: white;
+}
+.btn:hover{
+  background-color: blue;
+  color: white;
+  font-weight: bold;
+}
+
+@media screen and (max-width: 767px) {
+  .form-input {
+    width: 100%;
+  }
+  mat-form-field{
+    width: 70%;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .form-input {
+    width: 50%;
+  }
+  mat-form-field{
+    width: 60%;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+
+@media screen and (min-width: 1025px) {
+  .form-input {
+    width: 30%;
+  }
+  mat-form-field{
+    width: 40%;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}

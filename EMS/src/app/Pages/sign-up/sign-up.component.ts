@@ -2,6 +2,7 @@ import { Component, HostListener, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Location } from '@angular/common';
 import { validateVerticalPosition } from '@angular/cdk/overlay';
+import { TooltipPosition } from '@angular/material/tooltip';
 
 
 @Component({
@@ -53,7 +54,6 @@ export class SignUPComponent implements OnInit {
   ngOnInit(): void {
 
       this.regesrationForm = new FormGroup({
-        adminId: new FormControl(this.adminId),
         fname: new FormControl('', [Validators.required, Validators.pattern(/[(\[a-zA-Z0-9\])\\1{2,}\\[~`!@#$%^&()_={}[\]:;,.<>+\/?-]/)]),
         lname: new FormControl('', [Validators.required, Validators.pattern(/[(\[a-zA-Z0-9\])\\1{2,}\\[~`!@#$%^&()_={}[\]:;,.<>+\/?-]/)]),
         email: new FormControl('', [Validators.required, Validators.email,  Validators.pattern("[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?")]),
@@ -87,7 +87,7 @@ export class SignUPComponent implements OnInit {
   onSubmit(regesrationForm:FormGroup){
     var employee = this.regesrationForm.value;
     if(this.regesrationForm.invalid){
-      return;
+      return ;
     } else{
       console.log(employee);
     }

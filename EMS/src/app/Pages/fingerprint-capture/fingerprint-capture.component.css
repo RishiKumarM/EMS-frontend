@@ -1,0 +1,48 @@
+.fingerPrint{
+  width: 100%;
+  height: auto;
+}
+
+.fingerprint-capture {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 5%;
+  padding-bottom: 2%;
+}
+
+.fingerprint-image {
+  width: 200px;
+  height: 200px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: 2px solid #ccc;
+  border-radius: 50%;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.placeholder-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 14px;
+  color: #777;
+  text-align: center;
+}
+
+.capture-button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.capture-button:hover {
+  background-color: #0056b3;
+}

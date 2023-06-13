@@ -20,19 +20,17 @@ export class ApiService {
   {
     return this.http.delete("http://localhost:8080/deleteEmp"+id).pipe(map((response:any)=>{ return response;}));
   } 
-    
+  psotStudent(studentForm:any){
+    return this.http.post("http://localhost:8080/updateEmp",studentForm).pipe((response:any)=>{return response});
+  }  
+
   updateEmployee(employee:any)
   {
     let headers = new HttpHeaders({
       'Content-Type': 'application/json'
     });
   let options = { headers: headers };
-    console.log(employee);
     return this.http.put("http://localhost:8080/updateEmp",employee,options).pipe(map((response:any)=>{ return response;}));
-  }
-
-  onEditEmployee(employee:any){
-    return this.http.post("http://localhost:8080/updateEmp",employee).subscribe((response:any)=>{return response});
   }
 
   postEmployee(employee:any){
