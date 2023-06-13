@@ -1,0 +1,12 @@
+<div class="fingerPrint">
+<div class="container">
+  <div class="fingerprint-capture">
+    <form [formGroup]="fingerprintForm">
+    <div class="fingerprint-image" formControlName="fingerPrint" [ngStyle]="{ 'background-image': 'url(' + capturedFingerprint + ')' }">
+      <span *ngIf="!capturedFingerprintImageUrl" class="placeholder-text">No fingerprint captured</span>
+    </div>
+    <button class="capture-button" (click)="captureFingerprint()">Capture Fingerprint</button>
+  </form>
+  </div>
+</div>
+</div>

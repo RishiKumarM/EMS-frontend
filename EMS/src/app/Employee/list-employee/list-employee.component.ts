@@ -1,11 +1,12 @@
 import { HttpClient } from '@angular/common/http';
-import {AfterViewInit, Component, NgIterable, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, ChangeDetectorRef, Component, NgIterable, OnInit, ViewChild} from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
 import { DeleteWarningComponent } from 'src/app/Popup/delete-warning/delete-warning.component';
 import { UpdateDetailComponent } from 'src/app/Popup/update-detail/update-detail.component';
 import { ApiService } from 'src/app/Services/api.service';
+import { SharedService } from 'src/app/Services/shared.service';
 
 export interface Employee {
   sno: number;
@@ -22,27 +23,34 @@ export interface Employee {
   styleUrls: ['./list-employee.component.css']
 })
 
-export class ListEmployeeComponent implements OnInit {
+export class ListEmployeeComponent implements AfterViewInit {
   
   displayedColumns: string[] = ['sno', 'id', 'name', 'age','salary','address','action']
-  public array: any;
   firstLastButtons = true;
-  pageSizeOptions: number[] = [7, 10, 25, 100];
-  public pageSize = 7;
+  pageSizeOptions: number[] = [8, 15, 25, 100];
+  public pageSize = 8;
   public currentPage = 0;
   public pageLength = 100;
   dataSource :any;
-  constructor(private backend:ApiService, private Http:HttpClient, public dialog: MatDialog) {
+  public array: any;
+  isUndoVisible = false;
+  checkboxValue:any;
+  deleteDEmployee: string | null = null;
+  constructor(private backend:ApiService, private Http:HttpClient, public dialog: MatDialog, private sharedService: SharedService, private cdRef: ChangeDetectorRef) {
   }
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   ngAfterViewInit(): void {
-
+    this.dataSource = new MatTableDataSource<any>(this.dataSource);
     this.dataSource.paginator = this.paginator;
+    this.cdRef.detectChanges();
   }
+
   ngOnInit(): void {
-    this.getEmployee();  
+    this.sharedService.checkboxValueChange.subscribe(value => {
+      this.checkboxValue = value });
+    this.getEmployee(); 
   }
 
   getEmployee() {
@@ -66,30 +74,51 @@ export class ListEmployeeComponent implements OnInit {
     this.dataSource = part;
   }
   
-  deleteEmployee(): void {
-    const dialogRef = this.dialog.open(DeleteWarningComponent, {
+  deleteEmployee(element: any) {
+    this.dialog.open(DeleteWarningComponent, {
       data: {},
     });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-  
-    });
-    this.getEmployee();
+    const index = this.dataSource.indexOf(element);
+    if (index !== -1) {
+      this.deleteDEmployee = this.dataSource.splice(index, 1)[0];
+      this.isUndoVisible = true;
+      setTimeout(() => {
+        var employee = element;
+        this.checkboxValue
+        if(this.checkboxValue === false){
+          return;
+        }if(this.checkboxValue === true){
+          this.deleteDEmployee = null;
+          this.Http.delete("http://localhost:8080/deleteEmp/"+employee.id).subscribe(response => { 
+            this.getEmployee();  
+           })
+            this.checkboxValue = false;
+          }
+        this.isUndoVisible = false;
+      }, 5000) as any;
+    }
   }
-    // this.Http.delete("http://localhost:8080/deleteEmp/"+employee.id).subscribe(response => { alert("Detail has been Deleted!!")
 
-   onClick(): void{
+  undoDelete() {
+    if (this.deleteEmployee) {
+      this.dataSource.push(this.deleteEmployee); // Restore the item
+      this.deleteDEmployee = null;
+      this.isUndoVisible = false;
+    }
+  }
+
+   onUpdate(element: string){
+    this.sharedService.UpdateValueChange(element);
     const dialogRef = this.dialog.open(UpdateDetailComponent, {
       data: {},
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-  
+      
     });
   
    }
+   
 
 }
 

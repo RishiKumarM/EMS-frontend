@@ -2,9 +2,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px;
-  background-color: #333;
   color: #fff;
+  height: 10vh;
 }
 
 .logo {
@@ -13,7 +12,7 @@
 .logos {
   font-size: 30px;
   padding-left: 6%;
-  padding-top: 6%;
+  padding-top: 2%;
   font-weight: bold;
   height: 9vh;
   color: white;
@@ -65,10 +64,6 @@
   margin-top: 10px;
 }
 
-.active {
-  font-weight: bold;
-}
-
 @media (max-width: 768px) {
   .menu {
     display: none;
@@ -79,83 +74,11 @@
   }
 }
 
-
-.container {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
-  text-align: center;
-
-  background-color: white;
-  border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-h1 {
-  color: #ff6347;
-  font-size: 24px;
-}
-
-p {
-  color: #333;
-  font-size: 18px;
-}
-
-
-/* Home Page CSS */
-.hero {
-  padding: 50px;
-  text-align: center;
-  color: #fff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding-left: 60px;
-  padding-right: 60px;
-  background-color: #905555;
-  box-shadow: 10px 30px 80px 40px rgba(143, 143, 116, 0.5) inset;
-  font-family: 'Times New Roman', Times, serif;
-}
-
-.hero-content {
-  max-width: 600px;
-  margin: 0 auto;
-  
-}
-
-.features {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 50px;
-  background-color: #f2f2f2;
-}
-.featured{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding-left: 60px;
-  padding-right: 60px;
-  background-color: #905555;
-  box-shadow: 10px 30px 80px 40px rgba(143, 143, 116, 0.5) inset;
-  font-family: 'Times New Roman', Times, serif;
-}
-.text {
-  height: auto;
-  width: 95%;
-  text-align: justify;
-  left:3px;
-  color: white;
-  padding-top: 15px;
-  padding-bottom: 10px;
-  border-radius: 1.5rem;
-  margin: 1% 1%;
-}
 .example-spacer {
-  flex: 1 1 auto;
+  flex: 1 3 auto;
 }
 .spacer{
-  flex: 0.1 1 auto;
+  flex: 1 2 auto;
 }
 
 #btns{
@@ -169,136 +92,46 @@ mat-grid-list{
   font-size:larger;
   font-weight: 520;
 }
-.example-container {
-  width: 400px;
-  height: 200px;
-  margin: 12px;
-  border: 1px solid #555;
-}
-
-mat-drawer-content {
-  padding: 12px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-marquee{
-  font-size: xx-large;
-  color: rgb(18, 18, 16);
-  padding-left: 2%;
-  padding-right: 2%;
-  text-decoration: dashed;
-}
-marquee:hover{
-  font-size: xx-large;
-  color: rgb(30, 16, 185);
-  padding-left: 2%;
-  padding-right: 2%;
-  text-decoration: wavy;
-  text-decoration-color: aliceblue;
-  text-emphasis: inherit;
-}
-
-.section2{
-  height: 60vh;
-  width: 50%;
-  padding-top: 20px;
-  padding-left: 40px;
-  text-align: justify;
-  padding-right: 40px;
-  font-family: Arial, Helvetica, sans-serif;
-  background-color: transparent;
-  color: white;
-}
-
-.feature {
-  text-align: center;
-  margin: 0 20px;
-}
-
-.feature i {
-  font-size: 40px;
-  color: #2c3e50;
-}
-
-.cta {
-  text-align: center;
-  padding: 50px;
-  background-color: #2c3e50;
-  color: #fff;
-}
-
-.btn {
-  display: inline-block;
-  padding: 12px 24px;
-  background-color: #e74c3c;
-  color: #fff;
-  text-decoration: none;
-  border-radius: 4px;
-  transition: background-color 0.3s ease;
-}
-
-.btn:hover {
-  background-color: #c0392b;
-}
-
-.example-is-mobile .example-toolbar {
-  position: fixed;
-  z-index: 2;
-}
-
-h1.example-app-name {
-  margin-left: 8px;
-}
 
 #sideNavClose{
   position: absolute;
   right:2%;
-  padding:8px;
+  padding-top: 2%;
 }
 #sideNavClose:hover{
   position: absolute;
-  right:2%;
   font-weight: bold;
-  background: #ffc0c0;
   color: black;
-  padding:8px;
   border-radius: 50%;
 }
 .login{
   background-color: transparent;
   border-radius: 1.5rem;
-  width: 6%;
+  width: 15%;
   height: 6vh;
   font-weight: bold;
   font-size:large;
   border: none;
   color: white;
+  margin: 0% 3%;
 }
-.login:hover{
-  background-color: rgb(63, 132, 216);
-  border-radius: 1.5rem;
-  width: 6%;
-  height: 6vh;
-  font-weight: bold;
-  border: none;
-  color: white;
-}
+
 .sign{
   background-color: transparent;
   border-radius: 1.5rem;
-  width: 8%;
+  width: 20%;
   height: 6vh;
   font-weight: bold;
   font-size:large;
   border: none;
   color: white;
+  margin: 0% 0%;
 }
 
 .sign:hover{
   background-color: rgb(35, 58, 176);
   border-radius: 1.5rem;
-  width: 8%;
+  width: 25%;
   height: 6vh;
   font-weight: bold;
   border: none;
@@ -318,38 +151,16 @@ h1.example-app-name {
 .example-is-mobile .example-sidenav-container {
   flex: 1 0 auto;
 }
-
-.catogry {
-  overflow: hidden;
-  font-family: 'Syne', sans-serif; }
-  .catogry img {
-    transition-duration: 7s;
-    margin: 0 auto;
-    display: block; }
-    .catogry img:hover {
-      transform: scale(1.1);
-      -webkit-transform: scale(1.1);
-      -moz-transform: scale(1.1);
-      z-index: 0; }
-  .catogry .imgbox {
-    width: 100%;
-    overflow: hidden; }
-    .catogry .imgbox img {
-      height: 90vh;
-      width: 100%; }
-  .catogry .serumtext {
-    max-width: 550px;
-    margin: 0 auto; }
-  .catogry .serumtext.color-shild {
-    max-width: 640px; }
-    .catogry .serumtext.color-shild .text-sty {
-      font-style: italic; }
-  .catogry h4 {
-    font-size: 2 0px;
-    text-transform: uppercase;
-    font-weight: 100; }
-  .catogry .btn {
-    font-style: italic;
-    color: #000;
-    border-radius: 0;
-    padding: .7rem 1.6rem; }
+    .mat-toolbar {
+      display: flex;
+      align-items: center;
+    }
+    
+    .mat-toolbar-row {
+      flex-wrap: wrap;
+    }
+    
+    span {
+      margin-right: auto;
+    }
+    

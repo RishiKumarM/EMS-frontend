@@ -8,6 +8,9 @@ import { ForgetPasswordComponent } from './Pages/forget-password/forget-password
 import { AddEmployeeComponent } from './Employee/add-employee/add-employee.component';
 import { ListEmployeeComponent } from './Employee/list-employee/list-employee.component';
 import { TermsConditionComponent } from './Extra/terms-condition/terms-condition.component';
+import { FingerprintCaptureComponent } from './Pages/fingerprint-capture/fingerprint-capture.component';
+import { AddStudentComponent } from './Student/add-student/add-student.component';
+import { StudentListComponent } from './Student/student-list/student-list.component';
 
 
 const routes: Routes = [
@@ -17,8 +20,11 @@ const routes: Routes = [
   {path: 'login', component:LoginComponent},
   {path: 'forgetpassword', component:ForgetPasswordComponent},
   {path: 'addEmployee', component:AddEmployeeComponent},
-  {path: 'listEmployee', component:ListEmployeeComponent},
+  {path: 'emplist', component:ListEmployeeComponent},
   {path: 'termsconditions', component:TermsConditionComponent},
+  {path: 'fingerprint', component:FingerprintCaptureComponent},
+  {path: 'addstudent', component:AddStudentComponent},
+  {path: 'studentlist', component:StudentListComponent},
 
 
 ];

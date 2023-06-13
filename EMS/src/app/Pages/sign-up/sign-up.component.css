@@ -9,13 +9,13 @@
   width: 100%;
 }
 .leftArroow{
-  width: 10%;
-  font-size: x-large;
-  font-weight: bold;
+  width:6%;
+  height: 4vh;
+  background-color: rgb(88, 145, 145);
+  font-size: large;
+  font-weight: bolder;
   position: absolute;
-  left:-1%;
-  top:1%;
-  border-radius: 50%;
+  left:0%;
 }
 h4{
   padding: 2%;

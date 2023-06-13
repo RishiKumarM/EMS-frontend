@@ -23,6 +23,7 @@ export class HeaderComponent implements OnDestroy {
 
   ngOnDestroy(): void {
     this.mobileQuery.removeListener(this._mobileQueryListener);
+    this.isMenuOpen = true;
   }
 
 

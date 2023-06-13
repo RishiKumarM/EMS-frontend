@@ -13,14 +13,14 @@
         </mat-form-field>
         <br>
         <mat-form-field>
-          <input matInput type="password" formControlName="password" placeholder="Password" [type]="hide ? 'password' : 'text'">
+          <input matInput type="password" formControlName="password" placeholder="Password" [type]="hide ? 'password' : 'text'" required>
           <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
             <mat-icon>{{hide ? 'password' : 'visibility_off'}}</mat-icon>
           </button>
           <mat-error *ngIf="myError('password','required')">Enter Password in Correct Format</mat-error>
           <mat-error *ngIf="myError('password','pattern')">Password contain 8 characters and (A-Za-z0-9) and special characters. </mat-error>
         </mat-form-field><br><br/>
-        <button mat-raised-button color="primary" id="backButton" type="button" 
+        <button mat-raised-button color="primary" id="backButton"
         (click)="onSubmit(loginForm)"> continue </button>
         <p>By signing in you accept our <span id="terms" routerLink="/termsconditions">Terms and Conditions</span></p>
         <p id="forgetPassword" routerLink="/forgetpassword">Forget Password?</p>

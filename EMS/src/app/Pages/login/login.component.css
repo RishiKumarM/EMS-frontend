@@ -8,12 +8,12 @@
 }
 .leftArroow{
   width:6%;
-  font-size: x-large;
-  font-weight: bold;
+  height: 4vh;
+  background-color: rgb(88, 145, 145);
+  font-size: large;
+  font-weight: bolder;
   position: absolute;
   left:0%;
-  top:2%;
-  border-radius: 50%;
 }
 .formDesing{
   width: 60%;

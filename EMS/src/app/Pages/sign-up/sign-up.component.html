@@ -46,7 +46,7 @@
         <mat-error *ngIf="myError('confirmPassword','required')">Confirm Password is required</mat-error>
         <mat-error *ngIf="regesrationForm.hasError('passwordMismatch')">Passwords do not match</mat-error>
       </mat-form-field><br>
-      <button mat-raised-button color="primary" id="backButton" type="button" 
+      <button mat-raised-button color="primary" id="backButton"
       (click)="onSubmit(regesrationForm)"> WELCOME </button>
       <p>By signing up you accept our <span id="terms" routerLink="/termsconditions">Terms and Conditions</span></p>
       <p>Already have account? <span id="terms" routerLink="/login">Login</span></p>

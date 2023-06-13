@@ -4,30 +4,30 @@
     <div class="form">
       <form [formGroup]="addForm">
         <mat-form-field class="example-full-width">
-          <input matInput formControlName="id" placeholder="ID" value="Id">
+          <input matInput formControlName="id" placeholder="ID" >
           <mat-error *ngIf="myError('id', 'required')"> Id is required </mat-error>
         </mat-form-field>
 
         <mat-form-field class="example-full-width">
-          <input matInput formControlName="name" placeholder="Name" value="Name">
+          <input matInput formControlName="name" placeholder="Name" >
           <mat-error *ngIf="myError('name', 'required')"> Name is required. </mat-error>
           <mat-error *ngIf="myError('name', 'pattern')"> Invalid Name format. </mat-error>
         </mat-form-field><br>
 
         <mat-form-field class="example-full-width">
-          <input matInput formControlName="age" placeholder="Age" value="age">
+          <input matInput formControlName="age" placeholder="Age" >
           <mat-error *ngIf="myError('age', 'required')"> Age is required. </mat-error>
           <mat-error *ngIf="myError('age', 'pattern')"> Invalid Age format. </mat-error>
         </mat-form-field>
 
         <mat-form-field class="example-full-width">
-          <input matInput formControlName="salary" placeholder="Salary" value="salary">
+          <input matInput formControlName="salary" placeholder="Salary" >
           <mat-error *ngIf="myError('salary', 'required')"> salary is required. </mat-error>
           <mat-error *ngIf="myError('salary', 'pattern')"> Invalid salary format. </mat-error>
         </mat-form-field><br>
 
         <mat-form-field class="example-full-width">
-          <textarea matInput formControlName="address" placeholder="Address" value="address"></textarea>
+          <textarea matInput formControlName="address" placeholder="Address" ></textarea>
           <mat-error *ngIf="myError('address', 'required')"> address is required. </mat-error>
           <mat-error *ngIf="myError('address', 'pattern')"> Invalid address format. </mat-error>
         </mat-form-field><br>
