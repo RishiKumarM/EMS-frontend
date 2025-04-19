@@ -1,3 +1,6 @@
+  <td>{{(paginator.pageIndex * paginator.pageSize) + i + 1}}</td>
+<mat-paginator [length]="pageLength" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"
+      (page)="applyPageSizeFilter()"></mat-paginator>
 // pagination
    @ViewChild(MatPaginator) paginator!: MatPaginator;
    @ViewChild(MatSort) sort!: MatSort;
