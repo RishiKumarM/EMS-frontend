@@ -1,0 +1,39 @@
+// pagination
+   @ViewChild(MatPaginator) paginator!: MatPaginator;
+   @ViewChild(MatSort) sort!: MatSort;
+   changes = new Subject<void>();
+   firstPageLabel = $localize`First page`;
+   itemsPerPageLabel = $localize`Items per page:`;
+   lastPageLabel = $localize`Last page`;
+   nextPageLabel = 'Next page';
+   previousPageLabel = 'Previous page';
+   pageLength!: number;
+   page!: number;
+   pageSize = 15;
+   pageSizeOptions: number[] = [10, 25, 50, 100];
+   filterData: any[] = [];
+   dataSource = new MatTableDataSource<any>(this.filterData);
+ 
+   getRangeLabel(page: number, pageSize: number, pageLength: number): string {
+     if (length === 0) {
+       return $localize`Page 1 of 1`;
+     }
+     const amountPages = Math.ceil(pageLength / pageSize);
+     return $localize`Page ${page + 1} of ${amountPages}`;
+   }
+   applyPageSizeFilter() {
+     if (this.paginator) {
+       this.pageSize = this.paginator.pageSize;
+       if (this.pageSize === 100) {
+         this.filterData = this.cheatsBet;
+       } else {
+         const startIndex = this.paginator.pageIndex * this.pageSize;
+         const endIndex = startIndex + this.pageSize;
+         this.filterData = this.cheatsBet.slice(startIndex, endIndex);
+       }
+     }     
+   }
+  //  this.pageLength = this.cheatsBet.length;
+  //  this.pageSize = 15;
+  //  this.applyPageSizeFilter();
+   // pagination end
