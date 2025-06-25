@@ -1,0 +1,157 @@
+<div class="table-pagination d-flex justify-content-between align-items-center">
+                                                <!-- Items per page dropdown -->
+                                                <div class="items-per-page">
+                                                    <label for="itemsPerPage" class="me-2">Items per page:</label>
+                                                    <select id="itemsPerPage" class="form-select form-select-sm" style="width: auto;">
+                                                        <option value="5">5</option>
+                                                        <option value="10" selected>10</option>
+                                                        <option value="15">15</option>
+                                                        <option value="20">20</option>
+                                                        <option value="50">50</option>
+                                                    </select>
+                                                </div>
+
+                                                <!-- Pagination -->
+                                                <nav aria-label="Page navigation">
+                                                    <ul class="pagination mb-0">
+                                                        <li class="page-item disabled">
+                                                            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+                                                        </li>
+                                                        <li class="page-item active" aria-current="page"><a class="page-link" href="#">1</a></li>
+                                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                                        <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                                                    </ul>
+                                                </nav>
+                                            </div>
+
+ async function fetchDataForTab(tab, page = 1, itemsPerPage = 10) {  
+const response2 = await fetch(`${apiUrl}${endpoint}&actionfor=${encodeURIComponent("Today")}&username=${encodeURIComponent(fullUsername)}`);
+const result2 = await response2.json();
+renderGameHistoryTable(result2, page, itemsPerPage);
+renderPaginationControls(result2.length, itemsPerPage, page, tab);
+}
+
+ function renderPaginationControls(totalItems, itemsPerPage, currentPage, tab) {
+     const totalPages = Math.ceil(totalItems / itemsPerPage);
+     const paginationContainer = document.querySelector(`#${tab} .pagination`);
+
+     if (!paginationContainer) return;
+
+     if (totalItems <= itemsPerPage) {
+         paginationContainer.innerHTML = ""; 
+         paginationContainer.style.display = "none";
+         return;
+     }
+
+     paginationContainer.style.display = "flex";
+     paginationContainer.innerHTML = "";
+
+     const createPageItem = (pageNumber, isActive = false) => {
+         return `<li class="page-item ${isActive ? 'active' : ''}">
+                     <a class="page-link" href="#" data-page="${pageNumber}">${pageNumber}</a>
+                 </li>`;
+     };
+     const prevButton = `<li class="page-item ${currentPage === 1 ? 'disabled' : ''}">
+         <a class="page-link" href="#" data-page="${currentPage - 1}">Previous</a>
+     </li>`;
+     paginationContainer.innerHTML += prevButton;
+     const pageRange = 3;
+     let pagesToShow = [];
+     if (totalPages <= pageRange * 2 + 1) {
+
+         for (let i = 1; i <= totalPages; i++) {
+             pagesToShow.push(i);
+         }
+     } else {
+
+         if (currentPage <= pageRange) {
+
+             pagesToShow = [1, 2, 3, '...', totalPages];
+         } else if (currentPage >= totalPages - pageRange) {
+
+             pagesToShow = [1, '...', totalPages - 2, totalPages - 1, totalPages];
+         } else {
+
+             pagesToShow = [
+                 1, '...',
+                 currentPage - 1, currentPage, currentPage + 1,
+                 '...', totalPages
+             ];
+         }
+     }
+
+     pagesToShow.forEach(page => {
+         if (page === '...') {
+             paginationContainer.innerHTML += `<li class="page-item disabled"><span class="page-link">...</span></li>`;
+         } else {
+             paginationContainer.innerHTML += createPageItem(page, page === currentPage);
+         }
+     });
+
+     const nextButton = `<li class="page-item ${currentPage === totalPages ? 'disabled' : ''}">
+         <a class="page-link" href="#" data-page="${currentPage + 1}">Next</a>
+     </li>`;
+     paginationContainer.innerHTML += nextButton;
+
+     document.querySelectorAll(`#${tab} .pagination .page-link`).forEach(link => {
+         link.addEventListener("click", (e) => {
+             e.preventDefault();
+             const newPage = parseInt(link.getAttribute("data-page"));
+             if (newPage < 1 || newPage > totalPages) return;
+             fetchDataForTab(tab, newPage, itemsPerPage);
+         });
+     });
+ }
+
+ function renderGameHistoryTable(data, page, itemsPerPage) {
+     const tbody = document.querySelector("#GameHistory .summary-table tbody");
+     if (!tbody) return console.error("Game History Table body not found.");
+
+     tbody.innerHTML = "";
+
+     if (!data || data.length === 0) {
+         tbody.innerHTML = "<tr><td colspan='8'>No game history available.</td></tr>";
+         return;
+     }
+     if (!document.getElementById("row-hover-style")) {
+         const style = document.createElement("style");
+         style.id = "row-hover-style";
+         style.textContent = `
+             #GameHistory .summary-table tr:hover {
+                 background-color:#e16e6e;
+                 cursor: pointer;
+             }
+             #GameHistory .summary-table tr.active-row {
+                 background-color: #e16e6e; !important;
+             }
+         `;
+         document.head.appendChild(style);
+     }
+     // Calculate the data for the current page
+     const startIndex = (page - 1) * itemsPerPage;
+     const endIndex = Math.min(startIndex + itemsPerPage, data.length);
+     const currentPageData = data.slice(startIndex, endIndex);
+
+     // Render the current page's data
+     currentPageData.forEach(row => {
+         const tr = document.createElement("tr");
+         tr.innerHTML = `
+             <td>${row.roundId || "-"}</td>
+             <td>${row.marketId || "-"}</td>
+             <td>${row.stake || "-"}</td>
+             <td>${row.betProfit !== undefined ? row.betProfit.toFixed(2) : "0.00"}</td>
+             <td>${row.claim || "No"}</td>
+             <td>${row.winnerName || "-"}</td>
+             <td>${formatDate(row.betDrawTime) || "-"}</td>
+             <td>${formatDate(row.betPlacedTime) || "-"}</td>
+         `;
+         tr.addEventListener("click", () => {
+             const rows = tbody.querySelectorAll("tr");
+             rows.forEach(r => r.classList.remove("active-row"));
+             tr.classList.add("active-row");
+             selectedGameId = row.marketId;
+         });
+         tbody.appendChild(tr);
+     });
+ }
